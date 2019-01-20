@@ -1,10 +1,10 @@
 package com.web;
 
-
 import com.web.domain.Board;
 import com.web.domain.User;
 import com.web.domain.enums.BoardType;
-
+import com.web.repository.BoardRepository;
+import com.web.repository.UserRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class JpaMappingTest {
     private final String boardTestTitle = "테스트";
-    private final String email = "test@gmail.com";
+    private final String email = "test@gamil.com";
 
     @Autowired
     UserRepository userRepository;
@@ -30,23 +33,33 @@ public class JpaMappingTest {
     @Before
     public void init(){
         User user = userRepository.save(User.builder()
-                .name("havi")
-                .password("test")
-                .email(email)
-                .createdDate(LocalDateTime.now())
-                .build());
+        .name("havi")
+        .password("test")
+        .email(email)
+        .createData(LocalDateTime.now())
+        .build());
 
         boardRepository.save(Board.builder()
         .title(boardTestTitle)
         .subTitle("서브 타이틀")
         .content("콘텐츠")
-        .boardType(LocalDateTime.now())
-        .updatedDate(LocalDateTime.now())
-        .user(user).builde());
+        .boardType(BoardType.free)
+        .createData(LocalDateTime.now())
+        .updateData(LocalDateTime.now())
+        .user(user).build());
     }
 
     @Test
-    public void 제대로_생성됐는지_테스트(){
+    public void 제대로_생성됐는지_테스트() {
         User user = userRepository.findByEmail(email);
+        assertThat(user.getName(), is("havi"));
+        assertThat(user.getPassword(), is("test"));
+        assertThat(user.getEmail(), is(email));
+
+        Board board = boardRepository.findByUser(user);
+        assertThat(board.getTitle(), is(boardTestTitle));
+        assertThat(board.getSubTitle(), is("서브 타이틀"));
+        assertThat(board.getContent(), is("콘텐츠"));
+        assertThat(board.getBoardType(), is(BoardType.free));
     }
 }

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table
 public class Board implements Serializable {
+
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
