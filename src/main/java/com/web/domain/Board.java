@@ -35,22 +35,22 @@ public class Board implements Serializable {
     private BoardType boardType;
 
     @Column
-    private LocalDateTime createData;
+    private LocalDateTime createdDate;
 
     @Column
-    private LocalDateTime updateData;
+    private LocalDateTime updatedDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 
     @Builder
-    public Board(String title, String subTitle, String content, BoardType boardType, LocalDateTime createData, LocalDateTime updateData, User user){
+    public Board(String title, String subTitle, String content, BoardType boardType, LocalDateTime createdDate, LocalDateTime updatedDate, User user){
         this.title = title;
         this.subTitle = subTitle;
         this.content = content;
         this.boardType = boardType;
-        this.createData = createData;
-        this.updateData = updateData;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
         this.user = user;
     }
 }
