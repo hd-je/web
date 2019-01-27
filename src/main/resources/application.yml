@@ -1,0 +1,60 @@
+#facebook :
+#  client :
+#    clientId : 296350197902688
+#    clientSecret: 577a89520efbd36223c6cffcfdaf5804
+#    accessTokenUri: https://graph.facebook.com/oauth/access_token
+#    userAuthorizationUri: https://www.facebook.com/dialog/oauth?display=popup
+#    tokenName: oauth_token
+#    authenticationScheme: query
+#    clientAuthenticationScheme: form
+#    scope: email
+#  resource:
+#    userInfoUri: https://graph.facebook.com/me?fields=id,name,email,link
+#
+#google :
+#  client :
+#    clientId : 919478813678-4cgu0u269ecdji04teusd9urptsurgra.apps.googleusercontent.com
+#    clientSecret: Ae_J9tYButfw-2JsREaTg4HT
+#    accessTokenUri: https://accounts.google.com/o/oauth2/token
+#    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+#    scope: email, profile
+#  resource:
+#    userInfoUri: https://www.googleapis.com/oauth2/v2/userinfo
+#
+#kakao :
+#  client :
+#    clientId : 48f4627f63c223f96f7dbd3764344994
+#    accessTokenUri: https://kauth.kakao.com/oauth/token
+#    userAuthorizationUri: https://kauth.kakao.com/oauth/authorize
+#  resource:
+#    userInfoUri: https://kapi.kakao.com/v1/user/me
+#
+#
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  h2:
+    console:
+      enabled: true
+      path: /console
+  devtools:
+    livereload:
+      enabled: true
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 919478813678-4cgu0u269ecdji04teusd9urptsurgra.apps.googleusercontent.com
+            client-secret: Ae_J9tYButfw-2JsREaTg4HT
+          facebook:
+            client-id: 296350197902688
+            client-secret: 577a89520efbd36223c6cffcfdaf5804
+custom:
+  oauth2:
+    kakao:
+      client-id: 8f4627f63c223f96f7dbd3764344994

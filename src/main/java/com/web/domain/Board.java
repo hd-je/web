@@ -40,11 +40,11 @@ public class Board implements Serializable {
     @Column
     private LocalDateTime updatedDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch= FetchType.LAZY)
     private User user;
 
     @Builder
-    public Board(String title, String subTitle, String content, BoardType boardType, LocalDateTime createdDate, LocalDateTime updatedDate, User user){
+    public Board(String title, String subTitle, String content, BoardType boardType, LocalDateTime createdDate, LocalDateTime updatedDate, User user) {
         this.title = title;
         this.subTitle = subTitle;
         this.content = content;
