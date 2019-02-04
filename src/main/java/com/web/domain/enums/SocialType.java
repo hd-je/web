@@ -26,7 +26,7 @@ public enum SocialType {
         return name;
     }
 
-    public boolean isEques(String authority){
+    public boolean isEquels(String authority){
         return this.getRoleType().equals(authority);
     }
 }

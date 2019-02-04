@@ -68,9 +68,9 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
     }
 
     private User convertUser(String authority, Map<String, Object> map) {
-        if(FACEBOOK.isEques(authority)) return getModernUser(FACEBOOK, map);
-        else if(GOOGLE.isEques(authority)) return getModernUser(GOOGLE, map);
-        else if(KAKAO.isEques(authority)) return getKaKaoUser(map);
+        if(FACEBOOK.isEquels(authority)) return getModernUser(FACEBOOK, map);
+        else if(GOOGLE.isEquels(authority)) return getModernUser(GOOGLE, map);
+        else if(KAKAO.isEquels(authority)) return getKaKaoUser(map);
         return null;
     }
 

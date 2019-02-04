@@ -54,5 +54,5 @@ dependencies {
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     
-    //runtime('mysql:mysql-connector-java')
+    runtime('mysql:mysql-connector-java')
 }
